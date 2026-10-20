@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { SubmitEvent } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { ApiError } from "@/lib/api";
