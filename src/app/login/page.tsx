@@ -59,7 +59,7 @@ export default function LoginPage() {
         {error && <p role="alert">{error}</p>}
 
         <button type="submit" disabled={submitting}>
-            {submitting ? "Logging in..." : "Log in"}
+          {submitting ? "Logging in..." : "Log in"}
         </button>
       </form>
 
