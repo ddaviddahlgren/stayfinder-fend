@@ -26,8 +26,6 @@ export interface PropertyFilters {
   sort?: PropertySort;
 }
 
-export type BookingStatus = "pending" | "confirmed" | "cancelled";
-
 export interface Booking {
   id: string;
   property_id: string;
@@ -46,5 +44,6 @@ export type NewBooking = Pick<
   Booking,
   "guest_name" | "guest_email" | "check_in" | "check_out" | "guests"
 >;
+export type BookingStatus = "pending" | "confirmed" | "cancelled";
 
-export type BookingUpdate = Partial<NewBooking> & { status?: BookingStatus }
+export type BookingUpdate = Partial<NewBooking> & { status?: BookingStatus };
