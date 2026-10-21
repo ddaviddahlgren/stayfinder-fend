@@ -62,7 +62,7 @@ export default function BookingForm({
 
     try {
       const booking = await api<Booking>(
-        `/properties(${property.id}/bookings)`,
+        `/properties/${property.id}/bookings`,
         {
           method: "POST",
           body: JSON.stringify(body),
