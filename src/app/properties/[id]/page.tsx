@@ -1,17 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 import { api, ApiError } from "@/lib/api";
-import type { Property } from "@/types";
+import type { Booking, Property } from "@/types";
+import BookingForm from "@/components/BookingForm";
+import BookingList from "@/components/BookingList";
 
 export default function PropertyDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { user } = useAuth();
 
+  const [bookings, setBookings] = useState<Booking[]>([]);
   const [property, setProperty] = useState<Property | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<ApiError | null>(null);
+
+  const loadBookings = useCallback(() => {
+    if (!user) {
+      setBookings([]);
+      return;
+    }
+    api<Booking[]>(`/properties/${id}/bookings`)
+      .then(setBookings)
+      .catch(() => setBookings([]));
+  }, [id, user]);
+
+  useEffect(() => {
+    loadBookings();
+  }, [loadBookings]);
 
   useEffect(() => {
     api<Property>(`/properties/${id}`)
@@ -24,30 +43,44 @@ export default function PropertyDetailPage() {
         ),
       )
       .finally(() => setLoading(false));
-  },[id]);
+  }, [id]);
 
-  if (loading) return <p>Loading property...</p>
+  if (loading) return <p>Loading property...</p>;
 
   if (error && (error.status === 400 || error.status === 404)) {
     return (
-        <div>
-            <h1>Property not found</h1>
-            <p>This property does not exist or has been removed.</p>
-            <Link href="/properties">Back to properties</Link>
-        </div>
-    )
+      <div>
+        <h1>Property not found</h1>
+        <p>This property does not exist or has been removed.</p>
+        <Link href="/properties">Back to properties</Link>
+      </div>
+    );
   }
 
-  if (error) return <p role="alert">{error.message}</p>
-  if (!property) return null
+  if (error) return <p role="alert">{error.message}</p>;
+  if (!property) return null;
 
   return (
-    <div>
+    <>
+      <div>
         <h1>{property.title}</h1>
         <p>{property.location}</p>
         <p>{property.description}</p>
         <p>{property.price_per_night} SEK per night.</p>
         <p>Comfortable when less than {property.max_guests} guests</p>
-    </div>
-  )
+      </div>
+
+      <BookingForm property={property} onBooked={loadBookings} />
+
+      {user && (
+        <BookingList
+          propertyId={property.id}
+          ownerId={property.owner_id}
+          currentUserId={user.id}
+          bookings={bookings}
+          onChanged={loadBookings}
+        />
+      )}
+    </>
+  );
 }
