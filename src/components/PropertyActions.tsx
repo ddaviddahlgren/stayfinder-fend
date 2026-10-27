@@ -31,7 +31,7 @@ export default function PropertyActions({ property}: { property: Property }) {
 
     return (
         <div>
-            <Link href={`/prooperties/${property.id}/edit`}>Edit</Link>
+            <Link href={`/properties/${property.id}/edit`}>Edit</Link>
             <button onClick={handleDelete} disabled={deleting}>
                 {deleting ? "Deleting..." : "Delete"}
             </button>
