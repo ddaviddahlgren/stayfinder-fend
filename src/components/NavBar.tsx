@@ -22,7 +22,7 @@ export default function NavBar() {
 
                 {loading ? null : user ? (
                     <>
-                    <Link href="properties/new">New Property</Link>
+                    <Link href="/properties/new">New Property</Link>
                     <span>{user.email}</span>
                     <button onClick={handleLogout}>Log out</button>
                     </>
