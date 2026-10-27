@@ -8,6 +8,7 @@ import { api, ApiError } from "@/lib/api";
 import type { Booking, Property } from "@/types";
 import BookingForm from "@/components/BookingForm";
 import BookingList from "@/components/BookingList";
+import PropertyActions from "@/components/PropertyActions";
 
 export default function PropertyDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -69,6 +70,8 @@ export default function PropertyDetailPage() {
         <p>{property.price_per_night} SEK per night.</p>
         <p>Comfortable when less than {property.max_guests} guests</p>
       </div>
+
+      <PropertyActions property={property} />
 
       <BookingForm property={property} onBooked={loadBookings} />
 
