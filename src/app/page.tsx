@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api, ApiError } from "@/lib/api";
 import type { Property } from "@/types";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   const [properties, setProperties] = useState<Property[]>([]);
@@ -24,9 +25,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <h1>Welcome to StayFinder</h1>
-      <p>Find and book your next stay.</p>
+    <>
+      
+      <Hero />
 
       <h2>Latest properties</h2>
 
@@ -49,6 +50,6 @@ export default function Home() {
       </ul>
 
       <Link href="/properties">See all properties</Link>
-    </div>
+    </>
   );
 }

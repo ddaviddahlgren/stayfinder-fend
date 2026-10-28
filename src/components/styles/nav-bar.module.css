@@ -1,0 +1,23 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    gap: 15;
+    margin: 1rem;
+    justify-content: space-between;
+}
+
+.navLink {
+    transition: 0.3s ease;
+}
+
+.navLink:hover {
+    color: slategray;
+    transition: 0.2s ease;
+}

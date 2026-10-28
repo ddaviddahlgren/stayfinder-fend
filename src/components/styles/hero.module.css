@@ -1,0 +1,18 @@
+.hero {
+  background-color: rgb(234, 223, 204);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10;
+  padding: 2rem;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(
+    to right,
+    white 0%,
+    rgb(177, 198, 247) 25%,
+    rgb(177, 198, 247) 75%,
+    white 100%
+  ) 1;
+}
