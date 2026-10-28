@@ -36,7 +36,7 @@
 }
 
 .form input:focus {
-  outline: 2px solid rgb(164, 164, 246);
+  outline: none;
   border-color: transparent;
 }
 

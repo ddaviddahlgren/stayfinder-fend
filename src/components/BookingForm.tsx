@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { api, ApiError } from "@/lib/api";
 import type { Booking, NewBooking, Property } from "@/types";
+import styles from "@/components/styles/BookingForm.module.css";
 
 const MS_PER_DAY = 86_400_000;
 
@@ -40,7 +41,7 @@ export default function BookingForm({
   if (loading) return null;
   if (!user) {
     return (
-      <p>
+      <p className={styles.loginPrompt}>
         <Link href="/login">Log in</Link> to book this property.
       </p>
     );
@@ -93,82 +94,121 @@ export default function BookingForm({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Book ${property.title}</h2>
-      <label>
-        First name
-        <input
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
-        />
-      </label>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <h2 className={styles.title}>Book this property</h2>
 
-      <label>
-        Last name
-        <input
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
-        />
-      </label>
-      {fieldErrors.guest_name && <p role="alert">{fieldErrors.guest_name}</p>}
+      <div className={styles.row}>
+        <div className={styles.field}>
+          <label>
+            First name
+            <input
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <div className={styles.field}>
+          <label>
+            Last name
+            <input
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+      </div>
+      {fieldErrors.guest_name && (
+        <p role="alert" className={styles.error}>
+          {fieldErrors.guest_name}
+        </p>
+      )}
 
-      <label>
-        Email
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      {fieldErrors.guest_email && <p role="alert">{fieldErrors.guest_email}</p>}
+      <div className={styles.field}>
+        <label>
+          Email
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
+        {fieldErrors.guest_email && (
+          <p role="alert" className={styles.error}>
+            {fieldErrors.guest_email}
+          </p>
+        )}
+      </div>
 
-      <label>
-        Check-in
-        <input
-          type="date"
-          value={checkIn}
-          onChange={(e) => setCheckIn(e.target.value)}
-          required
-        />
-      </label>
-      {fieldErrors.check_in && <p role="alert">{fieldErrors.check_in}</p>}
+      <div className={styles.row}>
+        <div className={styles.field}>
+          <label>
+            Check-in
+            <input
+              type="date"
+              value={checkIn}
+              onChange={(e) => setCheckIn(e.target.value)}
+              required
+            />
+          </label>
+          {fieldErrors.check_in && (
+            <p role="alert" className={styles.error}>
+              {fieldErrors.check_in}
+            </p>
+          )}
+        </div>
+        <div className={styles.field}>
+          <label>
+            Check-out
+            <input
+              type="date"
+              value={checkOut}
+              onChange={(e) => setCheckOut(e.target.value)}
+              required
+            />
+          </label>
+          {fieldErrors.check_out && (
+            <p role="alert" className={styles.error}>
+              {fieldErrors.check_out}
+            </p>
+          )}
+        </div>
+      </div>
 
-      <label>
-        Check-out
-        <input
-          type="date"
-          value={checkOut}
-          onChange={(e) => setCheckOut(e.target.value)}
-          required
-        />
-      </label>
-      {fieldErrors.check_out && <p role="alert">{fieldErrors.check_out}</p>}
-
-      <label>
-        Guests
-        <input
-          type="number"
-          min="1"
-          value={guests}
-          onChange={(e) => setGuests(e.target.value)}
-          required
-        />
-      </label>
-      {fieldErrors.guests && <p role="alert">{fieldErrors.guests}</p>}
+      <div className={styles.field}>
+        <label>
+          Guests
+          <input
+            type="number"
+            min="1"
+            value={guests}
+            onChange={(e) => setGuests(e.target.value)}
+            required
+          />
+        </label>
+        {fieldErrors.guests && (
+          <p role="alert" className={styles.error}>
+            {fieldErrors.guests}
+          </p>
+        )}
+      </div>
 
       {nights > 0 && (
-        <p>
+        <p className={styles.summary}>
           {nights} {nights === 1 ? "night" : "nights"} x{" "}
           {property.price_per_night} SEK = <strong>{totalPrice} SEK</strong>
         </p>
       )}
 
-      {error && <p role="alert">{error}</p>}
+      {error && (
+        <p role="alert" className={styles.error}>
+          {error}
+        </p>
+      )}
 
-      <button type="submit" disabled={submitting}>
+      <button type="submit" className={styles.button} disabled={submitting}>
         {submitting ? "Booking..." : "Book"}
       </button>
     </form>
