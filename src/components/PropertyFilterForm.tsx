@@ -34,7 +34,7 @@ export default function PropertyFilterForm({
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Max price per night
           <input
             className={styles.input}
@@ -45,7 +45,7 @@ export default function PropertyFilterForm({
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Guests
           <input
             className={styles.input}
@@ -56,7 +56,7 @@ export default function PropertyFilterForm({
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Sort by:
           <select
             className={styles.input}

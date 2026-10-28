@@ -19,7 +19,7 @@ export default function NavBar() {
     <nav className={styles.nav}>
       <div className={styles.navBar}>
         <Link className={styles.navLink} href="/">
-          STAYFINDER
+          <p className={styles.logoLink}>STAYFINDER</p>
         </Link>
         <Link className={styles.navLink} href="/properties">
           Properties

@@ -1,8 +1,26 @@
 .pContainer {
+  width: fit-content;
+  max-width: 880px;
+  background-image: linear-gradient( to bottom right,
+  rgba(226, 226, 226, 0.383) 0%,
+  rgba(255, 255, 255, 0.489) 35%,
+  rgba(255, 255, 255, 0.315) 65%,
+  rgba(226, 226, 226, 0.383) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
+  margin: 2rem auto;
+  border: 1px solid;
+  border-image: linear-gradient(
+    to bottom right,
+    rgb(244, 238, 238) 0%,
+    rgb(222, 222, 222) 49%,
+    rgb(222, 222, 222) 51%,
+    rgb(244, 238, 238) 100%
+  ) 1;
+  border-radius: 2px;
+  box-shadow: -6px 6px #888;
 }
 
 .header {
@@ -40,7 +58,7 @@
 
 .seeAll {
   color: rgb(185, 191, 197);
-  margin-top: 1rem;
+  margin: 1rem auto;
   font-style: italic;
   border-bottom: 1px solid rgb(185, 191, 197);
   transition: 0.2s ease;

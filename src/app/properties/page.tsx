@@ -48,7 +48,7 @@ export default function PropertiesPage() {
 
       <PropertyFilterForm filters={filters} onChange={setFilters} />
 
-      {loading && <p>Loading properties...</p>}
+      {loading && <p className="loading">Loading properties...</p>}
       {error && <p role="alert">{error}</p>}
       {!loading && !error && properties.length === 0 && (
         <p>No properties found.</p>
