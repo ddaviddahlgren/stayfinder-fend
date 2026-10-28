@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api, ApiError } from "@/lib/api";
-import type { Property, PropertySort } from "@/types";
+import type { Property } from "@/types";
 import PropertyList from "@/components/PropertyList";
 import PropertyFilterForm from "@/components/PropertyFilterForm";
 import type { FilterValues } from "@/components/PropertyFilterForm";
@@ -44,7 +44,7 @@ export default function PropertiesPage() {
 
   return (
     <div>
-      <h1>Properties</h1>
+      <h1 style={{textAlign:"center"}}>Properties</h1>
 
       <PropertyFilterForm filters={filters} onChange={setFilters} />
 

@@ -24,9 +24,10 @@ export default function PropertyFilterForm({
 
   return (
     <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-      <label>
+      <label className={styles.label}>
         Location
         <input
+          className={styles.input}
           value={filters.location}
           onChange={(e) => update("location", e.target.value)}
         />
@@ -35,6 +36,7 @@ export default function PropertyFilterForm({
       <label>
         Max price per night
         <input
+        className={styles.input}
           type="number"
           min="1"
           value={filters.maxPrice}
@@ -45,6 +47,7 @@ export default function PropertyFilterForm({
       <label>
         Guests
         <input
+        className={styles.input}
           type="number"
           min="1"
           value={filters.guests}
@@ -53,8 +56,9 @@ export default function PropertyFilterForm({
       </label>
 
       <label>
-        Sort by price
+        Sort by:
         <select
+        className={styles.input}
           value={filters.sort}
           onChange={(e) => update("sort", e.target.value as PropertySort | "")}
         >

@@ -8,7 +8,7 @@
 .navBar {
     display: flex;
     flex-direction: row;
-    gap: 15;
+    gap: 25;
     margin: 1rem;
     justify-content: space-between;
 }

@@ -1,5 +1,21 @@
 .form {
+  padding: 1rem 2rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  margin: 0.4rem 0.5rem;
+}
+
+.input {
+  color: slategray;
+  background-color: rgba(255, 255, 255, 0.739);
+  outline: none;
+  border: 1px solid rgba(112, 128, 144, 0.17);
+  border-radius: 0.2rem;
+  margin-top: 0.4rem;
 }

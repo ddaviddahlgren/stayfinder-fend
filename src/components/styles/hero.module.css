@@ -1,5 +1,5 @@
 .hero {
-  background-color: rgb(234, 223, 204);
+  background-color: rgb(234, 237, 238);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,9 +10,9 @@
   border-bottom: 1px solid;
   border-image: linear-gradient(
     to right,
-    white 0%,
-    rgb(177, 198, 247) 25%,
-    rgb(177, 198, 247) 75%,
-    white 100%
+    rgba(255, 255, 255, 0) 0%,
+    slategray 25%,
+    slategray 75%,
+    rgba(255, 255, 255, 0) 100%
   ) 1;
 }
