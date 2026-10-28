@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { ApiError } from "@/lib/api";
+import styles from "@/components/styles/AuthForm.module.css";
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -31,10 +32,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div className={styles.page}>
+      <h1 className={styles.title}>Register</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label>
           Email
           <input
@@ -56,14 +57,18 @@ export default function RegisterPage() {
           />
         </label>
 
-        {error && <p role="alert">{error}</p>}
+        {error && (
+          <p role="alert" className={styles.error}>
+            {error}
+          </p>
+        )}
 
-        <button type="submit" disabled={submitting}>
+        <button type="submit" className={styles.button} disabled={submitting}>
           {submitting ? "Creating account..." : "Register"}
         </button>
       </form>
 
-      <p>
+      <p className={styles.switch}>
         Already have an account? <Link href="/login">Log in</Link>
       </p>
     </div>

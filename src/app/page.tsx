@@ -28,13 +28,15 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="loading">
-        {loading && <p>Loading properties...</p>}
-        {error && <p role="alert">{error}</p>}
-        {!loading && !error && properties.length === 0 && (
-          <p>No properties yet.</p>
-        )}
-      </div>
+      {(loading || error || properties.length === 0) && (
+        <div className="loading">
+          {loading && <p>Loading properties...</p>}
+          {error && <p role="alert">{error}</p>}
+          {!loading && !error && properties.length === 0 && (
+            <p>No properties yet.</p>
+          )}
+        </div>
+      )}
 
       <PropertyList properties={properties} />
     </>

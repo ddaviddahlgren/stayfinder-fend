@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { ApiError } from "@/lib/api";
+import styles from "@/components/styles/AuthForm.module.css"
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -31,10 +32,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>Log in</h1>
+    <div className={styles.page}>
+      <h1 className={styles.title}>Log in</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label>
           Email
           <input
@@ -56,14 +57,14 @@ export default function LoginPage() {
           />
         </label>
 
-        {error && <p role="alert">{error}</p>}
+        {error && <p role="alert" className={styles.error}>{error}</p>}
 
-        <button type="submit" disabled={submitting}>
+        <button type="submit" className={styles.button} disabled={submitting}>
           {submitting ? "Logging in..." : "Log in"}
         </button>
       </form>
 
-      <p>
+      <p className={styles.switch}>
         New to StayFinder? <Link href="/register">Register here</Link>
       </p>
     </div>
