@@ -5,6 +5,7 @@ import Link from "next/link";
 import { api, ApiError } from "@/lib/api";
 import type { Property } from "@/types";
 import Hero from "@/components/Hero";
+import PropertyList from "@/components/PropertyList";
 
 export default function Home() {
   const [properties, setProperties] = useState<Property[]>([]);
@@ -26,30 +27,16 @@ export default function Home() {
 
   return (
     <>
-      
       <Hero />
+      <div className="loading">
+        {loading && <p>Loading properties...</p>}
+        {error && <p role="alert">{error}</p>}
+        {!loading && !error && properties.length === 0 && (
+          <p>No properties yet.</p>
+        )}
+      </div>
 
-      <h2>Latest properties</h2>
-
-      {loading && <p>Loading properties...</p>}
-      {error && <p role="alert">{error}</p>}
-      {!loading && !error && properties.length === 0 && (
-        <p>No properties yet.</p>
-      )}
-
-      <ul>
-        {properties.map((p) => (
-          <li key={p.id}>
-            <h3>
-              <Link href={`/properties/${p.id}`}>{p.title}</Link>
-            </h3>
-            <p>{p.location}</p>
-            <p>{p.price_per_night} SEK per night</p>
-          </li>
-        ))}
-      </ul>
-
-      <Link href="/properties">See all properties</Link>
+      <PropertyList properties={properties} />
     </>
   );
 }

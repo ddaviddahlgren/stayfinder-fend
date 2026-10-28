@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "./styles/hero.module.css"
+import styles from "./styles/Hero.module.css"
 
 export default function Hero() {
   return (

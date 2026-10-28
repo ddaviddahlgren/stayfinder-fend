@@ -1,0 +1,55 @@
+.pContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.header {
+  margin: 1rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.item {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: -2px 2px rgb(189, 194, 199);
+  padding: 1rem;
+  max-width: 400px;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+}
+
+.location {
+  color: #555;
+  margin: 0.6rem 0;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.seeAll {
+  color: rgb(185, 191, 197);
+  margin-top: 1rem;
+  font-style: italic;
+  border-bottom: 1px solid rgb(185, 191, 197);
+  transition: 0.2s ease;
+}
+
+.seeAll:hover {
+  color: slategray;
+  margin-top: 1rem;
+  font-style: italic;
+  border-bottom: 1px solid slategray;
+  transition: 0.2s ease;
+}
