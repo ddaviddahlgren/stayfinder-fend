@@ -58,6 +58,7 @@
 }
 
 .button:hover {
+  color: goldenrod;
   background-color: rgb(215, 220, 225);
   transition: 0.2s ease;
 }

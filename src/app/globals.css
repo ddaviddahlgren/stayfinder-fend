@@ -55,8 +55,28 @@ a {
 }
 
 .loading {
-  margin: 2rem;
+  margin: 2rem auto;
   text-align: center;
+}
+
+.listArea {
+  min-height: 60vh;
+}
+
+.logoutBtn {
+  background-color: #888;
+  padding: 0.3rem 0.4rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logoutBtn:hover {
+  background-color: #889;
+  color: goldenrod;
+  transition: 0.2s ease;
 }
 
 @media (prefers-color-scheme: dark) {

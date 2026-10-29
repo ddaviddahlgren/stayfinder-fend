@@ -44,17 +44,36 @@ export default function PropertiesPage() {
 
   return (
     <div>
-      <h1 style={{textAlign:"center"}}>Properties</h1>
+      <h1 style={{ textAlign: "center", margin: "2rem auto" }}>Properties</h1>
+
+      <h3
+        style={{
+          fontSize: "0.8rem",
+          maxWidth: "720px",
+          textAlign: "left",
+          margin: "auto",
+        }}
+      >
+        Filter options
+      </h3>
 
       <PropertyFilterForm filters={filters} onChange={setFilters} />
 
-      {loading && <p className="loading">Loading properties...</p>}
-      {error && <p role="alert">{error}</p>}
-      {!loading && !error && properties.length === 0 && (
-        <p>No properties found.</p>
-      )}
+      <div className="listArea">
+        {loading && properties.length === 0 && (
+          <p className="loading">Loading properties...</p>
+        )}
+        {error && (
+          <p role="alert" className="loading">
+            {error}
+          </p>
+        )}
+        {!loading && !error && properties.length === 0 && (
+          <p className="loading">No properties found.</p>
+        )}
 
-      <PropertyList properties={properties} />
+        <PropertyList properties={properties} />
+      </div>
     </div>
   );
 }

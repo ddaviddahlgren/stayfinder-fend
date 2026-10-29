@@ -1,5 +1,7 @@
 .card {
   display: block;
+  width: 240px;
+  box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 2px;
   padding: 1rem;
@@ -16,6 +18,9 @@
 
 .title {
   margin: 0 0 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .location {

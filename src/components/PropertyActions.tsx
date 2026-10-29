@@ -30,9 +30,9 @@ export default function PropertyActions({ property}: { property: Property }) {
     }
 
     return (
-        <div>
-            <Link href={`/properties/${property.id}/edit`}>Edit</Link>
-            <button onClick={handleDelete} disabled={deleting}>
+        <div style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center", gap:"1rem", margin:"0.6rem auto 0 auto"}}>
+            <Link href={`/properties/${property.id}/edit`} >Edit</Link>
+            <button onClick={handleDelete} disabled={deleting} className="logoutBtn">
                 {deleting ? "Deleting..." : "Delete"}
             </button>
             {error && <p role="alert">{error}</p>}

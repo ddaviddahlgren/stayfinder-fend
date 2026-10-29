@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #d3d7da59;
+    box-shadow: -5px 5px #99999922;
 }
 
 .navBar {
@@ -11,6 +13,7 @@
     gap: 25;
     margin: 1rem;
     justify-content: space-between;
+    align-items: center;
 }
 
 .navLink {
@@ -18,18 +21,17 @@
 }
 
 .navLink:hover {
-    color: slategray;
+    color: goldenrod;
     transition: 0.2s ease;
 }
 
 .logoLink {
     font-weight: bold;
     letter-spacing: 4px;
-    margin-right: 2rem;
 }
 
 .logoLink:hover {
-    color: rgb(155, 197, 232);
+    color: goldenrod;
     transition: 0.1s ease;
     text-shadow: -1px 1px slategray;
 }

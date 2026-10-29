@@ -21,6 +21,7 @@ export default function NavBar() {
         <Link className={styles.navLink} href="/">
           <p className={styles.logoLink}>STAYFINDER</p>
         </Link>
+          <p>|</p>
         <Link className={styles.navLink} href="/properties">
           Properties
         </Link>
@@ -31,7 +32,7 @@ export default function NavBar() {
               New Property
             </Link>
             <span>{user.email}</span>
-            <button onClick={handleLogout}>Log out</button>
+            <button onClick={handleLogout} className="logoutBtn">LOG OUT</button>
           </>
         ) : (
           <>

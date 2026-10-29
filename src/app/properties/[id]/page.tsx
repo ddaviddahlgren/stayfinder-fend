@@ -9,6 +9,7 @@ import type { Booking, Property } from "@/types";
 import BookingForm from "@/components/BookingForm";
 import BookingList from "@/components/BookingList";
 import PropertyActions from "@/components/PropertyActions";
+import styles from "@/components/styles/PropertyDetailsCard.module.css"
 
 export default function PropertyDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -46,7 +47,7 @@ export default function PropertyDetailPage() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p>Loading property...</p>;
+  if (loading) return <p className="loading">Loading property...</p>;
 
   if (error && (error.status === 400 || error.status === 404)) {
     return (
@@ -63,9 +64,9 @@ export default function PropertyDetailPage() {
 
   return (
     <>
-      <div>
-        <h1>{property.title}</h1>
-        <p>{property.location}</p>
+        <h1 className={styles.h1}>{property.title}</h1>
+      <div className={styles.card}>
+        <p>Location: {property.location}</p>
         <p>{property.description}</p>
         <p>{property.price_per_night} SEK per night.</p>
         <p>Comfortable when less than {property.max_guests} guests</p>
