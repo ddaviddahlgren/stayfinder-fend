@@ -42,7 +42,7 @@ export default function BookingForm({
   if (!user) {
     return (
       <p className={styles.loginPrompt}>
-        <Link href="/login">Log in</Link> to book this property.
+        <Link className={styles.noUser} href="/login">Log in</Link> to book this property.
       </p>
     );
   }

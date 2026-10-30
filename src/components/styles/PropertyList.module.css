@@ -60,7 +60,7 @@
 
 .seeAll {
   color: rgb(185, 191, 197);
-  margin: 1rem auto;
+  margin: 1.2rem auto;
   font-style: italic;
   border-bottom: 1px solid rgb(185, 191, 197);
   transition: 0.2s ease;
@@ -68,8 +68,6 @@
 
 .seeAll:hover {
   color: slategray;
-  margin-top: 1rem;
-  font-style: italic;
   border-bottom: 1px solid slategray;
   transition: 0.2s ease;
 }

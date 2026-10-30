@@ -39,8 +39,18 @@
   font-weight: 600;
 }
 
+.field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  filter: invert(40%) sepia(10%) saturate(600%) hue-rotate(170deg);
+}
+
+.field input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
 .field input {
-  color: slategray;
+  color: rgba(57, 63, 68, 0.642);
   background-color: rgba(255, 255, 255, 0.739);
   outline: none;
   border: 1px solid rgba(112, 128, 144, 0.17);
@@ -56,7 +66,6 @@
   border-color: transparent;
 }
 
-/* The nights x price preview */
 .summary {
   margin: 0;
   padding: 0.75rem;
@@ -92,8 +101,34 @@
   cursor: not-allowed;
 }
 
-/* "Log in to book" message for logged-out visitors */
 .loginPrompt {
   margin-top: 2rem;
   text-align: center;
+}
+
+.noUser {
+  position: relative;
+  color: goldenrod;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.noUser::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.16s ease-in-out;
+}
+
+.noUser:hover {
+  color: inherit;
+  transition: 0.1s ease;
+}
+
+.noUser:hover::after {
+  width: 100%;
 }

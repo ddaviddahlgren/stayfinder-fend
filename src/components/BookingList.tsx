@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { api, ApiError } from "@/lib/api";
 import type { Booking } from "@/types";
+import styles from "@/components/styles/BookingList.module.css";
 
 export default function BookingList({
   propertyId,
@@ -82,18 +83,26 @@ export default function BookingList({
     }
   }
 
-  if (bookings.length === 0) return <p style={{textAlign:"center"}}>No bookings to show.</p>;
+  if (bookings.length === 0)
+    return <p style={{ textAlign: "center" }}>No bookings to show.</p>;
 
   return (
-    <div>
-      <h2>{isOwner ? "Bookings for this property" : "Your bookings"}</h2>
+    <div className={styles.myBookings}>
+      <h2 className={styles.h2}>
+        {isOwner ? "Bookings for this property" : "Your bookings"}
+      </h2>
       {error && <p role="alert">{error}</p>}
-      <ul>
+      <ul className={styles.list}>
         {bookings.map((b) => (
-          <li key={b.id}>
-            <p>
-              {b.guest_name} ({b.guest_email}), {b.guests} guests.
-            </p>
+          <li key={b.id} className={styles.item}>
+            <strong>Full Name:</strong>
+            <p className={styles.details}>{b.guest_name}.</p>
+
+            <strong>Email:</strong>
+            <p className={styles.details}>{b.guest_email}</p>
+
+            <strong>Dates booked:</strong>
+
             {editingId === b.id ? (
               <div>
                 <input
@@ -116,33 +125,60 @@ export default function BookingList({
                 <button onClick={() => setEditingId(null)}>Cancel edit</button>
               </div>
             ) : (
-              <p>
-                {b.check_in} to {b.check_out}, {b.total_price} SEK. Booking
-                status: {b.status}
-              </p>
+              <div
+                style={{
+                  borderBottom: "1px solid black",
+                  paddingBottom: "0.6rem",
+                }}
+              >
+                <p className={styles.details}>
+                  {b.check_in} to {b.check_out}
+                </p>
+                <p>
+                  Total price: <strong>{b.total_price} SEK</strong>. Status:{" "}
+                  {b.status}
+                </p>
+              </div>
             )}
-
-            {isOwner && b.status === "pending" && (
-              <button onClick={() => changeStatus(b.id, "confirmed")}>
-                Confirm booking
-              </button>
-            )}
-
-            {b.status !== "cancelled" && (
-              <button onClick={() => changeStatus(b.id, "cancelled")}>
-                Cancel booking
-              </button>
-            )}
-
-            {b.user_id === currentUserId &&
-              b.status !== "cancelled" &&
-              editingId !== b.id && (
-                <button onClick={() => startEdit(b)}>Edit booking</button>
+            <p style={{ marginBottom: "0.3rem", fontWeight: "bold" }}>
+              Booking options
+            </p>
+            <div className={styles.optBtns}>
+              {isOwner && b.status === "pending" && (
+                <button
+                  className={styles.button}
+                  onClick={() => changeStatus(b.id, "confirmed")}
+                >
+                  Confirm booking
+                </button>
               )}
 
-            {b.user_id === currentUserId && (
-              <button onClick={() => remove(b.id)}>Delete booking</button>
-            )}
+              {b.status !== "cancelled" && (
+                <button
+                  className={styles.button}
+                  onClick={() => changeStatus(b.id, "cancelled")}
+                >
+                  Cancel
+                </button>
+              )}
+
+              {b.user_id === currentUserId &&
+                b.status !== "cancelled" &&
+                editingId !== b.id && (
+                  <button
+                    className={styles.button}
+                    onClick={() => startEdit(b)}
+                  >
+                    Edit
+                  </button>
+                )}
+
+              {b.user_id === currentUserId && (
+                <button className={styles.button} onClick={() => remove(b.id)}>
+                  Delete
+                </button>
+              )}
+            </div>
           </li>
         ))}
       </ul>

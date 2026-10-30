@@ -18,11 +18,27 @@
 
 .navLink {
     transition: 0.3s ease;
+    position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.16s ease-in-out;
 }
 
 .navLink:hover {
     color: goldenrod;
     transition: 0.2s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
 }
 
 .logoLink {
