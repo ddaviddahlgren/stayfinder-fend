@@ -102,6 +102,13 @@
   cursor: not-allowed;
 }
 
+.prompts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .loginPrompt {
   margin-top: 2rem;
   text-align: center;
@@ -132,4 +139,19 @@
 
 .noUser:hover::after {
   width: 100%;
+}
+
+.seeAll {
+  text-align: center;
+  color: rgb(185, 191, 197);
+  margin: 1.2rem auto;
+  font-style: italic;
+  border-bottom: 1px solid rgb(185, 191, 197);
+  transition: 0.2s ease;
+}
+
+.seeAll:hover {
+  color: slategray;
+  border-bottom: 1px solid slategray;
+  transition: 0.2s ease;
 }

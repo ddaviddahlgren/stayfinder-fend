@@ -41,9 +41,17 @@ export default function BookingForm({
   if (loading) return null;
   if (!user) {
     return (
-      <p className={styles.loginPrompt}>
-        <Link className={styles.noUser} href="/login">Log in</Link> to book this property.
-      </p>
+      <div className={styles.prompts}>
+        <p className={styles.loginPrompt}>
+          <Link className={styles.noUser} href="/login">
+            Log in
+          </Link>{" "}
+          to book this property.
+        </p>
+        <Link className={styles.seeAll} href="/properties">
+          See all properties
+        </Link>
+      </div>
     );
   }
 

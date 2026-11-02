@@ -65,7 +65,7 @@ export default function LoginPage() {
       </form>
 
       <p className={styles.switch}>
-        New to StayFinder? <Link href="/register">Register here</Link>
+        New to StayFinder? <Link href="/register" className={styles.navLink}>Register here</Link>
       </p>
     </div>
   );

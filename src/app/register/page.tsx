@@ -90,7 +90,7 @@ export default function RegisterPage() {
       </form>
 
       <p className={styles.switch}>
-        Already have an account? <Link href="/login">Log in</Link>
+        Already have an account? <Link href="/login" className={styles.navLink}>Log in</Link>
       </p>
     </div>
   );
