@@ -56,19 +56,18 @@ export default function BookingList({
     }
   }
 
-  async function changeStatus(id: string, status: "confirmed" | "cancelled") {
-    if (
-      status === "cancelled" &&
-      !window.confirm(
-        `Are you sure you want to cancel your booking for ${propertyTitle}?`,
-      )
-    ) {
-      return;
+  async function changeStatus(b: Booking, status: "confirmed" | "cancelled") {
+    if (status === "cancelled") {
+        const message = 
+        b.user_id === currentUserId
+        ? `Are you sure you want to cancel your booking for ${propertyTitle}?`
+        : `Are you sure you want to cancel ${b.guest_name}'s booking for ${propertyTitle}?`;
+      if (!window.confirm(message)) return
     }
 
     setError(null);
     try {
-      await api(`/properties/${propertyId}/bookings/${id}`, {
+      await api(`/properties/${propertyId}/bookings/${b.id}`, {
         method: "PATCH",
         body: JSON.stringify({ status }),
       });
@@ -163,7 +162,7 @@ export default function BookingList({
               {isOwner && b.status === "pending" && (
                 <button
                   className={styles.button}
-                  onClick={() => changeStatus(b.id, "confirmed")}
+                  onClick={() => changeStatus(b, "confirmed")}
                 >
                   Confirm booking
                 </button>
@@ -172,7 +171,7 @@ export default function BookingList({
               {b.status !== "cancelled" && (
                 <button
                   className={styles.button}
-                  onClick={() => changeStatus(b.id, "cancelled")}
+                  onClick={() => changeStatus(b, "cancelled")}
                 >
                   Cancel
                 </button>
