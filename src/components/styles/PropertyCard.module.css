@@ -1,7 +1,7 @@
 .card {
   display: block;
   width: 240px;
-  box-sizing: border-box;
+  box-sizing: border-box;  
   border: 1px solid #ddd;
   border-radius: 2px;
   padding: 1rem;
@@ -25,6 +25,7 @@
 
 .location {
   color: #555;
+  margin-bottom: 7px;
 }
 
 .price {

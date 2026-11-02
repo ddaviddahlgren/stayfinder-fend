@@ -106,7 +106,7 @@ export default function BookingList({
         {bookings.map((b) => (
           <li key={b.id} className={styles.item}>
             <strong>Full Name:</strong>
-            <p className={styles.details}>{b.guest_name}.</p>
+            <p className={styles.details}>{b.guest_name}</p>
 
             <strong>Email:</strong>
             <p className={styles.details}>{b.guest_email}</p>

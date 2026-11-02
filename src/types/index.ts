@@ -52,3 +52,12 @@ export type NewBooking = Pick<
 export type BookingStatus = "pending" | "confirmed" | "cancelled";
 
 export type BookingUpdate = Partial<NewBooking> & { status?: BookingStatus };
+
+export interface BookingWithProperty extends Booking {
+  properties: { id: string, title: string, location: string }
+}
+
+export interface MyBookings {
+  made: BookingWithProperty[];
+  received: BookingWithProperty[]
+}
