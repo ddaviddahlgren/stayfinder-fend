@@ -31,7 +31,7 @@ export default function NavBar() {
             <Link className={styles.navLink} href="/properties/new">
               New Property
             </Link>
-            <span>{user.email}</span>
+            <span>{user.user_metadata?.full_name || user.email}</span>
             <button onClick={handleLogout} className="logoutBtn">LOG OUT</button>
           </>
         ) : (
