@@ -7,12 +7,14 @@ import styles from "@/components/styles/BookingList.module.css";
 
 export default function BookingList({
   propertyId,
+  propertyTitle,
   ownerId,
   currentUserId,
   bookings,
   onChanged,
 }: {
   propertyId: string;
+  propertyTitle: string;
   ownerId: string;
   currentUserId: string;
   bookings: Booking[];
@@ -55,6 +57,15 @@ export default function BookingList({
   }
 
   async function changeStatus(id: string, status: "confirmed" | "cancelled") {
+    if (
+      status === "cancelled" &&
+      !window.confirm(
+        `Are you sure you want to cancel your booking for ${propertyTitle}?`,
+      )
+    ) {
+      return;
+    }
+
     setError(null);
     try {
       await api(`/properties/${propertyId}/bookings/${id}`, {
@@ -104,17 +115,22 @@ export default function BookingList({
             <strong>Dates booked:</strong>
 
             {editingId === b.id ? (
-              <div>
-                <input
-                  type="date"
-                  value={editCheckIn}
-                  onChange={(e) => setEditCheckIn(e.target.value)}
-                />
-                <input
-                  type="date"
-                  value={editCheckOut}
-                  onChange={(e) => setEditCheckOut(e.target.value)}
-                />
+              <>
+                <div className={styles.editContainer}>
+                  <label>Check-in: </label>
+                  <input
+                    type="date"
+                    value={editCheckIn}
+                    onChange={(e) => setEditCheckIn(e.target.value)}
+                  />
+                  <label>Check-out: </label>
+                  <input
+                    type="date"
+                    value={editCheckOut}
+                    onChange={(e) => setEditCheckOut(e.target.value)}
+                  />
+                </div>
+                <label>Guests: </label>
                 <input
                   type="number"
                   min="1"
@@ -123,7 +139,7 @@ export default function BookingList({
                 />
                 <button onClick={() => saveEdit(b.id)}>Save</button>
                 <button onClick={() => setEditingId(null)}>Cancel edit</button>
-              </div>
+              </>
             ) : (
               <div
                 style={{

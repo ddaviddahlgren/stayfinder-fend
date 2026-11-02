@@ -79,6 +79,7 @@ export default function PropertyDetailPage() {
       {user && (
         <BookingList
           propertyId={property.id}
+          propertyTitle={property.title}
           ownerId={property.owner_id}
           currentUserId={user.id}
           bookings={bookings}
