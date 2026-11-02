@@ -26,7 +26,7 @@
 }
 
 .details {
-    margin-bottom: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 .button {
@@ -34,7 +34,7 @@
   padding: 0.7rem;
   border: none;
   border-radius: 2px;
-  background: rgb(201, 208, 215);
+  background: #888;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -42,13 +42,17 @@
 }
 
 .button:hover {
-  color: goldenrod;
-  background-color: rgb(215, 220, 225);
+  background-color: #888888a4;
   transition: 0.2s ease;
 }
 
 .optBtns {
   display: flex;
- flex-direction: row;
- justify-content: space-between; 
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.editContainer {
+  display: flex;
+  width: 400px;
 }
