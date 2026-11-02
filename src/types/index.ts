@@ -1,6 +1,11 @@
 export interface User {
   id: string;
   email?: string;
+  user_metadata?: {
+    full_name?: string;
+    first_name?: string;
+    last_name?: string;
+  };
 }
 
 export interface Property {

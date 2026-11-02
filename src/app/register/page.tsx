@@ -13,6 +13,8 @@ export default function RegisterPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -22,7 +24,7 @@ export default function RegisterPage() {
     setSubmitting(true);
 
     try {
-      await register(email, password);
+      await register(email, password, firstName.trim(), lastName.trim());
       router.push("/properties");
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Could not register");
@@ -36,6 +38,25 @@ export default function RegisterPage() {
       <h1 className={styles.title}>Register</h1>
 
       <form className={styles.form} onSubmit={handleSubmit}>
+
+        <label>
+          First name
+          <input 
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+          />
+        </label>
+
+        <label>
+          Last name
+          <input 
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+          />
+        </label>
+
         <label>
           Email
           <input
