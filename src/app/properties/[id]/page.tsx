@@ -9,7 +9,7 @@ import type { Booking, Property } from "@/types";
 import BookingForm from "@/components/BookingForm";
 import BookingList from "@/components/BookingList";
 import PropertyActions from "@/components/PropertyActions";
-import styles from "@/components/styles/PropertyDetailsCard.module.css"
+import styles from "@/components/styles/PropertyDetailsCard.module.css";
 
 export default function PropertyDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -64,12 +64,16 @@ export default function PropertyDetailPage() {
 
   return (
     <>
-        <h1 className={styles.h1}>{property.title}</h1>
+      <h1 className={styles.h1}>{property.title}</h1>
       <div className={styles.card}>
         <p>Location: {property.location}</p>
         <p>{property.description}</p>
         <p>{property.price_per_night} SEK per night.</p>
-        <p>Comfortable when less than {property.max_guests} guests</p>
+        {property.max_guests < 2 ? (
+          <p>Comfortable when {property.max_guests} guest</p>
+        ) : (
+          <p>Comfortable when less than {property.max_guests} guests</p>
+        )}
       </div>
 
       <PropertyActions property={property} />
