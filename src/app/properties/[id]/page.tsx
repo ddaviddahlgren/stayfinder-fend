@@ -78,7 +78,9 @@ export default function PropertyDetailPage() {
 
       <PropertyActions property={property} />
 
-      <BookingForm property={property} onBooked={loadBookings} />
+      {user?.id !== property.owner_id && (
+        <BookingForm property={property} onBooked={loadBookings} />
+      )}
 
       {user && (
         <BookingList

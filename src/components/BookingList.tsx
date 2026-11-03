@@ -99,7 +99,7 @@ export default function BookingList({
   }
 
   if (bookings.length === 0)
-    return <p style={{ textAlign: "center" }}>No bookings to show.</p>;
+    return <p style={{ textAlign: "center", marginTop:"2rem" }}>No bookings to show.</p>;
 
   return (
     <div className={styles.myBookings}>

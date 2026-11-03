@@ -7,6 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import { api, ApiError } from "@/lib/api";
 import type { BookingWithProperty, MyBookings } from "@/types";
 import styles from "@/components/styles/MyBookings.module.css";
+import MyProperties from "@/components/MyProperties";
 
 function BookingRow({
   b,
@@ -74,6 +75,9 @@ export default function MePage() {
       <h1 style={{ textAlign: "center", margin: "2rem auto" }}>
         {user.user_metadata?.full_name || user.email}
       </h1>
+
+      <MyProperties userId={user.id}/>
+
       <div className={styles.allBookingsContainer}>
         <div className={styles.bookingsContainer}>
           <h2 style={{ textDecoration: "underline", padding: "0.5rem 0.8rem" }}>
@@ -95,7 +99,7 @@ export default function MePage() {
             Bookings I have made
           </h2>
           {data.made.length === 0 ? (
-            <p>You have not booked anything yet.</p>
+            <p style={{padding:"0.8rem"}}>You have not booked anything yet.</p>
           ) : (
             <ul className={styles.bookingRow}>
               {data.made.map((b) => (
