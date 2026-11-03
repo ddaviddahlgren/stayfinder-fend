@@ -9,7 +9,7 @@ export default function PropertyList({
   properties: Property[];
 }) {
   return (
-    <div className={styles.pContainer}>
+    <div className={styles.container}>
       <h2 className={styles.header}>Latest properties</h2>
       <ul className={styles.list}>
         {properties.map((p) => (

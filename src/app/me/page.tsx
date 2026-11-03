@@ -84,7 +84,7 @@ export default function MePage() {
             Bookings on my properties
           </h2>
           {data.received.length === 0 ? (
-            <p>No one has booked your properties yet.</p>
+            <p style={{padding:"0.8rem"}}>No one has booked your properties yet.</p>
           ) : (
             <ul className={styles.bookingRow}>
               {data.received.map((b) => (

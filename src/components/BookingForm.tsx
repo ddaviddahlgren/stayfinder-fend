@@ -86,13 +86,13 @@ export default function BookingForm({
       setGuests("1");
     } catch (error) {
       if (error instanceof ApiError) {
-        setError(error.message);
         const map: Record<string, string> = {};
         for (const issue of error.issues ?? []) {
           const field = String(issue.path[0] ?? "");
           if (field && !map[field]) map[field] = issue.message;
         }
         setFieldErrors(map);
+        setError(Object.keys(map).length === 0 ? error.message : null);
       } else {
         setError("Could not create booking");
       }
