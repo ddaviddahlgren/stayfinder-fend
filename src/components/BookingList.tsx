@@ -79,10 +79,15 @@ export default function BookingList({
     }
   }
 
-  async function remove(id: string) {
+  async function remove(b: Booking) {
+    if (
+      !window.confirm(
+        `Are you sure you want to delete your booking for ${propertyTitle}, ${b.check_in} to ${b.check_out}?`
+      )
+    )
     setError(null);
     try {
-      await api(`/properties/${propertyId}/bookings/${id}`, {
+      await api(`/properties/${propertyId}/bookings/${b.id}`, {
         method: "DELETE",
       });
       onChanged();
@@ -155,9 +160,9 @@ export default function BookingList({
                 </p>
               </div>
             )}
-            <p style={{ marginBottom: "0.3rem", fontWeight: "bold" }}>
+            {!b && (<p style={{ marginBottom: "0.3rem", fontWeight: "bold" }}>
               Booking options
-            </p>
+            </p>)}
             <div className={styles.optBtns}>
               {isOwner && b.status === "pending" && (
                 <button
