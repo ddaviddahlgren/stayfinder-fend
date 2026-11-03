@@ -58,11 +58,11 @@ export default function BookingList({
 
   async function changeStatus(b: Booking, status: "confirmed" | "cancelled") {
     if (status === "cancelled") {
-        const message = 
+      const message =
         b.user_id === currentUserId
-        ? `Are you sure you want to cancel your booking for ${propertyTitle}?`
-        : `Are you sure you want to cancel ${b.guest_name}'s booking for ${propertyTitle}?`;
-      if (!window.confirm(message)) return
+          ? `Are you sure you want to cancel your booking for ${propertyTitle}?`
+          : `Are you sure you want to cancel ${b.guest_name}'s booking for ${propertyTitle}?`;
+      if (!window.confirm(message)) return;
     }
 
     setError(null);
@@ -82,10 +82,10 @@ export default function BookingList({
   async function remove(b: Booking) {
     if (
       !window.confirm(
-        `Are you sure you want to delete your booking for ${propertyTitle}, ${b.check_in} to ${b.check_out}?`
+        `Are you sure you want to delete your booking for ${propertyTitle}, ${b.check_in} to ${b.check_out}?`,
       )
     )
-    setError(null);
+      setError(null);
     try {
       await api(`/properties/${propertyId}/bookings/${b.id}`, {
         method: "DELETE",
@@ -160,9 +160,11 @@ export default function BookingList({
                 </p>
               </div>
             )}
-            {!b && (<p style={{ marginBottom: "0.3rem", fontWeight: "bold" }}>
-              Booking options
-            </p>)}
+            {!b && (
+              <p style={{ marginBottom: "0.3rem", fontWeight: "bold" }}>
+                Booking options
+              </p>
+            )}
             <div className={styles.optBtns}>
               {isOwner && b.status === "pending" && (
                 <button
@@ -194,7 +196,7 @@ export default function BookingList({
                 )}
 
               {b.user_id === currentUserId && (
-                <button className={styles.button} onClick={() => remove(b.id)}>
+                <button className={styles.button} onClick={() => remove(b)}>
                   Delete
                 </button>
               )}
