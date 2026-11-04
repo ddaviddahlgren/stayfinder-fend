@@ -5,7 +5,6 @@ import Link from "next/link";
 import { api, ApiError } from "@/lib/api";
 import type { Property } from "@/types";
 import styles from "./styles/MyProperties.module.css";
-import PropertyList from "./PropertyList";
 import PropertyCard from "./PropertyCard";
 
 export default function MyProperties({ userId }: { userId: string }) {
