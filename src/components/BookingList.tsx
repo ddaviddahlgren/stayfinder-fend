@@ -99,7 +99,11 @@ export default function BookingList({
   }
 
   if (bookings.length === 0)
-    return <p style={{ textAlign: "center", marginTop:"2rem" }}>No bookings to show.</p>;
+    return (
+      <p style={{ textAlign: "center", marginTop: "2rem" }}>
+        No bookings to show.
+      </p>
+    );
 
   return (
     <div className={styles.myBookings}>
@@ -121,28 +125,50 @@ export default function BookingList({
             {editingId === b.id ? (
               <>
                 <div className={styles.editContainer}>
-                  <label>Check-in: </label>
+                  <label className={styles.label}>Check-in: </label>
                   <input
+                    className={styles.dateInput}
                     type="date"
                     value={editCheckIn}
                     onChange={(e) => setEditCheckIn(e.target.value)}
                   />
-                  <label>Check-out: </label>
+                </div>
+                <div className={styles.editContainer}>
+                  <label className={styles.label}>Check-out: </label>
                   <input
+                    className={styles.dateInput}
                     type="date"
                     value={editCheckOut}
                     onChange={(e) => setEditCheckOut(e.target.value)}
                   />
                 </div>
-                <label>Guests: </label>
-                <input
-                  type="number"
-                  min="1"
-                  value={editGuests}
-                  onChange={(e) => setEditGuests(e.target.value)}
-                />
-                <button onClick={() => saveEdit(b.id)}>Save</button>
-                <button onClick={() => setEditingId(null)}>Cancel edit</button>
+                <div className={styles.editContainer}>
+                  <label
+                    className={styles.label}
+                    style={{ marginTop: "0.4rem" }}
+                  >
+                    <strong>Guests: </strong>
+                  </label>
+                  <input
+                    className={styles.dateInput}
+                    type="number"
+                    min="1"
+                    value={editGuests}
+                    onChange={(e) => setEditGuests(e.target.value)}
+                  />
+                </div>
+                <button
+                  className={styles.button}
+                  onClick={() => saveEdit(b.id)}
+                >
+                  Save
+                </button>
+                <button
+                  className={styles.button}
+                  onClick={() => setEditingId(null)}
+                >
+                  Cancel Edit
+                </button>
               </>
             ) : (
               <div

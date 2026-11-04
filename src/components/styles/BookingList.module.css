@@ -15,6 +15,7 @@
 }
 
 .item {
+  font-size: 0.8rem;
   display: flex;
   flex-direction: column;
   padding: 1.4rem;
@@ -47,12 +48,43 @@
 }
 
 .optBtns {
+  margin-top: 0.2rem;
+  padding-top: 0.6rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-top: 1px solid black;
 }
 
 .editContainer {
   display: flex;
-  width: 400px;
+  flex-direction: column;
+  width: fit-content;
+  flex-wrap: wrap;
+  height: fit-content;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+.label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: end;
+  margin-right: 0.1rem;
+  text-align: left;
+}
+
+.dateInput {
+  height: 20px;
+  font-family: inherit;
+  margin: auto;
+  padding: 0.5rem 0 0.4rem 0.1rem;
+  color: black;
+  background-color: #88888800;
+  cursor: pointer;
+  filter: invert(60%) sepia(1%) saturate(600%) hue-rotate(170deg);
+
+}
+
+.dateInput[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
